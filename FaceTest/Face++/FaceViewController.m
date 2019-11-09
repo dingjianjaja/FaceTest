@@ -85,19 +85,13 @@
     NSLog(@"头部-X：%ld",(long)model.landmark.head.x);
     NSLog(@"头部-Y：%ld",(long)model.landmark.head.y);
     
-    // 整个身体的方框尺寸
-     Body_rectangle *bodyRect = model.body_rectangle;
     
     UIImage *newImage = [self createShareImage:_imageV.image Context:@"ces的十多个大哥哥"];
-    NSMutableArray *frameArr = [NSMutableArray array];
-    for (TotalModel *totalModel in rectArr) {
-        [frameArr addObject:totalModel.body_rectangle];
-    }
-    UIImage *fImage = [self drawRectOnImage:newImage frames:frameArr];
+    UIImage *fImage = [self drawRectOnImage:newImage frames:rectArr];
     self.imageV.image = fImage;
 }
 
-// 在图片上添加矩形框 底部图片名字image
+// 在图片上添加矩形框 底图片名字image
 - (UIImage *)drawRectOnImage:(UIImage *)image frames:(NSArray *)frameArr
 {
     UIImage *sourceImage = image;
@@ -110,10 +104,24 @@
     //画 自己想要画的内容(添加的图片)
     CGContextDrawPath(context, kCGPathStroke);
  
-    for (Body_rectangle *bodyFrame in frameArr) {
-        CGRect rect = CGRectMake(bodyFrame.left, bodyFrame.top, bodyFrame.width, bodyFrame.height);
-
+    for (TotalModel *totalModel in frameArr) {
+        CGRect rect = CGRectMake(totalModel.body_rectangle.left, totalModel.body_rectangle.top, totalModel.body_rectangle.width, totalModel.body_rectangle.height);
+        
+        CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
         CGContextStrokeRect(context,rect);//画方框
+        
+        // 帽子的高度
+        float hatH = (totalModel.landmark.neck.y - totalModel.landmark.head.y) *0.6;
+        float hatW = 2 * hatH;
+        
+        // 头部
+        CGRect headRect = CGRectMake(totalModel.landmark.head.x + totalModel.body_rectangle.left - 0.5*hatW, totalModel.body_rectangle.top, hatW, hatH);
+        CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+        CGContextStrokeRect(context,headRect);
+        
+        // 颈部
+//        CGRect neckRect = CGRectMake(totalModel.landmark.neck.x + totalModel.body_rectangle.left, totalModel.landmark.neck.y + totalModel.body_rectangle.top, 50, 50);
+//        CGContextStrokeRect(context, neckRect);
         
     }
     

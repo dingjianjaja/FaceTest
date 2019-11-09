@@ -88,8 +88,8 @@
             filePath = "FaceTest/Face++/FaceViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-calculatedPosition:"
             landmarkType = "7">
          </BreakpointContent>
