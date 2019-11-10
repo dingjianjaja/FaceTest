@@ -18,79 +18,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "42D46071-49B2-4302-880C-15310629A80D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "FaceTest/ViewController.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "-compare:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "42D46071-49B2-4302-880C-15310629A80D - 6ad6dece6d6be7fe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__26-[ViewController compare:]_block_invoke_2"
-                  moduleName = "FaceTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dingjianjaja/Github_lib/FaceTest/FaceTest/ViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "1456">
-               </Location>
-               <Location
-                  uuid = "42D46071-49B2-4302-880C-15310629A80D - 4c84ca648edf8bef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_e8_32s"
-                  moduleName = "FaceTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dingjianjaja/Github_lib/FaceTest/FaceTest/ViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "42D46071-49B2-4302-880C-15310629A80D - d161833c6ad37ab0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__26-[ViewController compare:]_block_invoke.102"
-                  moduleName = "FaceTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dingjianjaja/Github_lib/FaceTest/FaceTest/ViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "82">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AE577BF4-F083-439F-88D9-0654D812A582"
+            uuid = "5F6DD693-409C-4023-9234-A019D1CB33E0"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FaceTest/Face++/FaceViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-calculatedPosition:"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-judgeAction:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41993E21-8E75-475B-9D33-7B47320F83D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FaceTest/Face++/FaceViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-drawRectOnImage:frames:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

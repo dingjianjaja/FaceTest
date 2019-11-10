@@ -15,6 +15,8 @@
 
 @interface FaceViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
+@property (retain, nonatomic)UIImage *originImage;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSelectSg;
 
 @end
 
@@ -25,6 +27,10 @@
     // Do any additional setup after loading the view.
 }
 
+- (IBAction)typeChangeAction:(UISegmentedControl *)sender {
+    
+    
+}
 
 
 
@@ -34,9 +40,46 @@
 }
 
 - (IBAction)judgeAction:(UIButton *)sender {
-    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSString *imageStr = [_imageV.image toBase64];
+    
+    
+    // 萤石 安全帽检测
+    if (_typeSelectSg.selectedSegmentIndex == 1) {
+        NSString *urlStr = @"https://open.ys7.com/api/lapp/intelligence/target/analysis";
+            
+            NSDictionary *params = @{@"accessToken":@"at.3983qloz9pj7rwu71ok539s3czvhsruo-7eesalpec2-1t7t3u6-kryqmuleh",
+                                     @"dataType":@"1",
+                                     @"image":imageStr,
+                                     @"serviceType":@"helmet"};
+
+            // 获得请求管理者
+            AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+            
+            // 设置请求格式
+        //    session.requestSerializer = [AFJSONRequestSerializer serializer];
+            
+            session.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html", nil];
+            
+            [session POST:urlStr parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+                
+            } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                NSLog(@"%@",responseObject);
+                
+                
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                NSLog(@"%@",error);
+            }];
+        
+        
+        
+        return;
+    }
+    
+    
+    
     
     NSString *urlStr = @"https://api-cn.faceplusplus.com/humanbodypp/v1/skeleton";
     
@@ -86,13 +129,13 @@
     NSLog(@"头部-Y：%ld",(long)model.landmark.head.y);
     
     
-    UIImage *newImage = [self createShareImage:_imageV.image Context:@"ces的十多个大哥哥"];
-    UIImage *fImage = [self drawRectOnImage:newImage frames:rectArr];
-    self.imageV.image = fImage;
+    UIImage *newImage = [self createShareImage:_imageV.image Context:@"安全帽检测"];
+    [self drawRectOnImage:newImage frames:rectArr];
+//    self.imageV.image = fImage;
 }
 
 // 在图片上添加矩形框 底图片名字image
-- (UIImage *)drawRectOnImage:(UIImage *)image frames:(NSArray *)frameArr
+- (void)drawRectOnImage:(UIImage *)image frames:(NSArray *)frameArr
 {
     UIImage *sourceImage = image;
     CGSize imageSize; //画的背景 大小
@@ -106,31 +149,77 @@
  
     for (TotalModel *totalModel in frameArr) {
         CGRect rect = CGRectMake(totalModel.body_rectangle.left, totalModel.body_rectangle.top, totalModel.body_rectangle.width, totalModel.body_rectangle.height);
-        
-        CGContextSetFillColorWithColor(context, [UIColor blueColor].CGColor);
+        [[UIColor blueColor] setStroke];// 人物整体用蓝色
+        CGContextSetLineWidth(context, 3);
         CGContextStrokeRect(context,rect);//画方框
-        
         // 帽子的高度
-        float hatH = (totalModel.landmark.neck.y - totalModel.landmark.head.y) *0.6;
+        float hatH;
+        if (totalModel.landmark.neck.y > 0) {
+            hatH = (totalModel.landmark.neck.y - totalModel.landmark.head.y) *0.6;
+        }else{
+            hatH = (totalModel.landmark.left_shoulder.y - totalModel.landmark.head.y) *0.6;
+        }
         float hatW = 2 * hatH;
         
         // 头部
         CGRect headRect = CGRectMake(totalModel.landmark.head.x + totalModel.body_rectangle.left - 0.5*hatW, totalModel.body_rectangle.top, hatW, hatH);
-        CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
+        [[UIColor redColor] setStroke];// 还未判定或判定为否的安全帽用个红色
         CGContextStrokeRect(context,headRect);
         
-        // 颈部
-//        CGRect neckRect = CGRectMake(totalModel.landmark.neck.x + totalModel.body_rectangle.left, totalModel.landmark.neck.y + totalModel.body_rectangle.top, 50, 50);
-//        CGContextStrokeRect(context, neckRect);
-        
+        NSString *subImageStr = [[self getPartOfImage:_imageV.image rect:headRect] toBase64];
+        NSString *url = @"https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token='24.65c36dd236ac63e0cdac5ca0e491458d.2592000.1575944387.282335-17737295'";
+        NSDictionary *params = @{@"image":subImageStr};
+            // 获得请求管理者
+            AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
+            // 设置请求格式
+        //    session.requestSerializer = [AFJSONRequestSerializer serializer];
+        [session.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        session.completionQueue = dispatch_get_global_queue(0, 0);
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        __block NSDictionary *resp = [NSDictionary dictionary];
+        [session POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"%@",responseObject);
+            resp = responseObject;
+            dispatch_semaphore_signal(semaphore);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            dispatch_semaphore_signal(semaphore);
+            NSLog(@"%@",error);
+        }];
+        dispatch_semaphore_wait(semaphore,DISPATCH_TIME_FOREVER);  //等待
+        NSArray *arr = resp[@"result"];
+        for (NSDictionary *resultDic in arr) {
+            NSLog(@"%@",resultDic[@"keyword"]);
+            if ([resultDic[@"keyword"] containsString:@"安全帽"] || [resultDic[@"keyword"] containsString:@"头盔"]) {
+                [[UIColor greenColor] setStroke];// 判定正确的安全帽用绿色
+                CGContextStrokeRect(context,headRect);
+                UIImage *newImage=UIGraphicsGetImageFromCurrentImageContext();
+                continue;
+            }
+        }
     }
     
     //返回绘制的新图形
-    
     UIImage *newImage=UIGraphicsGetImageFromCurrentImageContext();
-    
+    self.imageV.image = newImage;
     UIGraphicsEndImageContext();
-    return newImage;
+}
+
+- (NSString *)URLEncodedString:(NSString *)str
+{
+    // CharactersToBeEscaped = @":/?&=;+!@#$()~',*";
+    // CharactersToLeaveUnescaped = @"[].";
+
+    NSString *unencodedString = str;
+    NSString *encodedString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)unencodedString,
+                                                              NULL,
+                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                              kCFStringEncodingUTF8));
+
+    return encodedString;
 }
 
 // 1.将文字添加到图片上;imageName 图片名字， text 需画的字体
@@ -144,7 +233,7 @@
     //获得 图形上下文
     CGContextRef context=UIGraphicsGetCurrentContext();
     CGContextDrawPath(context, kCGPathStroke);
-    CGFloat nameFont = 8.f;
+    CGFloat nameFont = 18.f;
     //画 自己想要画的内容
     NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:nameFont]};
     CGRect sizeToFit = [text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, nameFont) options:NSStringDrawingUsesDeviceMetrics attributes:attributes context:nil];
@@ -158,6 +247,17 @@
     
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+
+// get part of the image
+- (UIImage *)getPartOfImage:(UIImage *)img rect:(CGRect)partRect {
+    CGImageRef imageRef = img.CGImage;
+    CGImageRef imagePartRef = CGImageCreateWithImageInRect(imageRef, partRect);
+    UIImage *retImg = [UIImage imageWithCGImage:imagePartRef];
+    CGImageRelease(imagePartRef);
+    return retImg;
+    
 }
 
 
