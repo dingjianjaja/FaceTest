@@ -42,6 +42,7 @@
 		20B00D467A852E11A1A92A45 /* libPods-FaceTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FaceTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D2453FB9644BFCB0A9A1A8 /* Pods-FaceTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceTest.release.xcconfig"; path = "Target Support Files/Pods-FaceTest/Pods-FaceTest.release.xcconfig"; sourceTree = "<group>"; };
 		A60AE0A884AD04412925B64A /* Pods-FaceTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceTest.debug.xcconfig"; path = "Target Support Files/Pods-FaceTest/Pods-FaceTest.debug.xcconfig"; sourceTree = "<group>"; };
+		F064EA6D237BF62700BA896A /* pythonTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = pythonTest.py; sourceTree = "<group>"; };
 		F08DD59923750D330079EFFA /* FaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceViewController.h; sourceTree = "<group>"; };
 		F08DD59A23750D330079EFFA /* FaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceViewController.m; sourceTree = "<group>"; };
 		F08DD5A1237517C90079EFFA /* UIImage+TYImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+TYImage.h"; sourceTree = "<group>"; };
@@ -116,6 +117,7 @@
 			children = (
 				F08DD5A1237517C90079EFFA /* UIImage+TYImage.h */,
 				F08DD5A2237517C90079EFFA /* UIImage+TYImage.m */,
+				F064EA6D237BF62700BA896A /* pythonTest.py */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
