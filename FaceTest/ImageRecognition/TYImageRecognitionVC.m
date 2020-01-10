@@ -1,92 +1,107 @@
 //
-//  ViewController.m
+//  TYImageRecognitionVC.m
 //  FaceTest
 //
-//  Created by dingjianjaja on 2019/9/19.
-//  Copyright © 2019 dingjianjaja. All rights reserved.
+//  Created by dingjianjaja on 2020/1/9.
+//  Copyright © 2020 dingjianjaja. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "TYImageRecognitionVC.h"
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 
-@interface ViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *resultImageV;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView1;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView2;
-@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
-@property (nonatomic, assign) NSInteger currentPhoto;
-@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *jyjgLabel;
+@interface TYImageRecognitionVC ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *imageV;
+@property (weak, nonatomic) IBOutlet UIView *resultBgV;
+@property (weak, nonatomic) IBOutlet UIButton *typeBtn;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSelectSg;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel2;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel3;
+
+@property (strong,nonatomic) NSDictionary *typeModelDic;
+
 @end
 
-@implementation ViewController
+@implementation TYImageRecognitionVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+
+#pragma mark -- actions
+- (IBAction)typeChangeAction:(UISegmentedControl *)sender {
     
     
 }
 
-- (IBAction)takePhoto1:(UIButton *)sender {
+
+
+- (IBAction)getPhotoAction:(UIButton *)sender {
+    self.resultBgV.hidden = YES;
+    self.typeBtn.hidden = YES;
     [self selectPhotoImage:1];
-}
-- (IBAction)takePhto2:(UIButton *)sender {
-    [self selectPhotoImage:2];
-    self.resultImageV.image = [UIImage imageNamed:@""];
-    self.jyjgLabel.text = @"";
-    self.jyjgLabel.backgroundColor = [UIColor whiteColor];
-    self.resultLabel.text = @"";
-    self.errorLabel.text = @"";
-}
-- (IBAction)compare:(UIButton *)sender {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSString *image1 = [self base64FromImage:_imageView1.image];
     
-    NSString *image2 = [self base64FromImage:_imageView2.image];
-    NSString *urlStr = @"https://aip.baidubce.com/rest/2.0/face/v3/match?access_token='24.5cafc871bf8c0ad42f53353d23bd7fed.2592000.1581213149.282335-17281894'";
-    NSArray *arr = @[@{@"image": image1,@"image_type": @"BASE64",@"face_type": @"LIVE",@"liveness_control": @"NONE"},@{@"image": image2,@"image_type": @"BASE64",@"face_type": @"LIVE",@"liveness_control": @"NONE"},];
+}
+
+- (IBAction)judgeAction:(UIButton *)sender {
+    NSString *url = @"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/classification/distinguishType";
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSString *image1 = [self base64FromImage:_imageV.image];
+    /*token 24.ddc39dc33c978770bfd7a281a42c18ef.2592000.1581212207.282335-18239613*/
+    NSString *urlStr = @"https://aip.baidubce.com/rpc/2.0/ai_custom/v1/classification/distinguishType?access_token='24.ddc39dc33c978770bfd7a281a42c18ef.2592000.1581212207.282335-18239613'";
+    NSDictionary *param = @{@"image": image1};
 
     // 获得请求管理者
     AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
     
     // 设置请求格式
     session.requestSerializer = [AFJSONRequestSerializer serializer];
-    [session.requestSerializer requestWithMethod:@"POST" URLString:urlStr parameters:arr error:nil];
-    [session POST:urlStr parameters:arr progress:^(NSProgress * _Nonnull uploadProgress) {
+    [session.requestSerializer requestWithMethod:@"POST" URLString:urlStr parameters:param error:nil];
+    [session POST:urlStr parameters:param progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         NSLog(@"%@",responseObject);
         NSDictionary *dic = (NSDictionary *)responseObject;
-        NSDictionary *result = dic[@"result"];
-        if ([result isKindOfClass:[NSDictionary class]]) {
-            NSString *scroStr = [NSString stringWithFormat:@"%@",result[@"score"]];
-            self->_resultLabel.text = scroStr;
-            if (scroStr.floatValue > 75) {
-                self.jyjgLabel.text = @"校验通过";
-                self.jyjgLabel.backgroundColor = [UIColor greenColor];
-                self.resultImageV.image = [UIImage imageNamed:@"true"];
-            }else{
-                self.jyjgLabel.text = @"校验不通过";
-                self.resultImageV.image = [UIImage imageNamed:@"false"];
-                self.jyjgLabel.backgroundColor = [UIColor redColor];
+        NSArray *result = dic[@"results"];
+        for (int i = 0; i < result.count; i++) {
+            NSDictionary *modelType = result[i];
+            NSString *scroStr = [NSString stringWithFormat:@"%@",modelType[@"score"]];
+            NSString *typeName = modelType[@"name"];
+            if (i == 0) {
+                self->_typeLabel1.text = [NSString stringWithFormat:@"%@:%.2f",self.typeModelDic[typeName],scroStr.floatValue];
+                [self.typeBtn setTitle:self.typeModelDic[typeName] forState:UIControlStateNormal];
+            }else if (i == 1) {
+                self->_typeLabel2.text = [NSString stringWithFormat:@"%@:%.2f",self.typeModelDic[typeName],scroStr.floatValue];
+            }else if (i == 2) {
+                self->_typeLabel3.text = [NSString stringWithFormat:@"%@:%.2f",self.typeModelDic[typeName],scroStr.floatValue];
             }
-            
-        }else{
-            self->_errorLabel.text = dic[@"error_msg"];
         }
+        self.resultBgV.hidden = NO;
+        self.typeBtn.hidden = NO;
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
     }];
-
-    
 }
 
+/*
+#pragma mark - Navigation
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+
+#pragma mark -- imagePicker
 - (void)selectPhotoImage:(NSInteger)current{
-    self.currentPhoto = current;
     //创建UIImagePickerController对象，并设置代理和可编辑
     UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.editing = YES;
@@ -140,12 +155,9 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     //获取到的图片
     UIImage * image = [info valueForKey:UIImagePickerControllerEditedImage];
-    if (self.currentPhoto == 1) {
-        _imageView1.image = image;
-    }else{
-        _imageView2.image = image;
-    }
+    _imageV.image = image;
 }
+
 
 
 - (NSString *)base64FromImage:(UIImage *)originImage{
@@ -154,5 +166,18 @@
     return encodedImageStr;
 }
 
+
+
+- (NSDictionary *)typeModelDic{
+    if (!_typeModelDic) {
+        _typeModelDic = @{@"tower_room":@"塔房",
+                                 @"beautify_pipes":@"美化排气管",
+                                 @"RRU":@"RRU",
+                                 @"rectifier":@"整流器",
+                          @"image_tianxian":@"美化树",
+                          @"[default]":@"其他"};
+    }
+    return _typeModelDic;
+}
 
 @end

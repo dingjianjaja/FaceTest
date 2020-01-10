@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dlU-6W-7ie">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dlU-6W-7ie">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -65,6 +65,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pcV-4B-4Ev" id="RVJ-HO-Jh0">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="图像类型识别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbi-e6-W97">
+                                                    <rect key="frame" x="30" y="11" width="213" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="t6x-dP-CeN" kind="show" id="oiz-SX-WTP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LbZ-wH-GOc">
+                                        <rect key="frame" x="0.0" y="158.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LbZ-wH-GOc" id="5tJ-vh-tkn">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -79,7 +99,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omJ-BP-qoi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-378" y="102"/>
+            <point key="canvasLocation" x="-413.04347826086962" y="101.78571428571428"/>
         </scene>
         <!--人脸识别-->
         <scene sceneID="tne-QT-ifu">
@@ -255,7 +275,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="compare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FmD-eM-23E"/>
                                     <action selector="judgeAction:" destination="7Ra-F9-PMD" eventType="touchUpInside" id="IpI-C5-gSK"/>
                                 </connections>
                             </button>
@@ -272,7 +291,6 @@
                                 </state>
                                 <connections>
                                     <action selector="getPhotoAction:" destination="7Ra-F9-PMD" eventType="touchUpInside" id="L74-qo-XKE"/>
-                                    <action selector="takePhto2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p29-pZ-Lep"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RNq-md-nWg">
@@ -280,7 +298,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="原始"/>
-                                    <segment title="萤石-安全帽识别"/>
+                                    <segment title="其他"/>
                                 </segments>
                                 <connections>
                                     <action selector="typeChangeAction:" destination="7Ra-F9-PMD" eventType="valueChanged" id="CGf-NU-ypw"/>
@@ -308,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cs1-Tz-OWT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="411.59420289855075" y="668.97321428571422"/>
+            <point key="canvasLocation" x="432" y="676"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GsA-fQ-ju9">
@@ -324,10 +342,152 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfF-1A-5zh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-538" y="102"/>
+            <point key="canvasLocation" x="-1110" y="102"/>
+        </scene>
+        <!--图像识别-->
+        <scene sceneID="aCe-yi-gZn">
+            <objects>
+                <viewController id="t6x-dP-CeN" customClass="TYImageRecognitionVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="27b-PW-Zcn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c0J-16-23X">
+                                <rect key="frame" x="0.0" y="132" width="414" height="579"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Keg-Le-g6a">
+                                <rect key="frame" x="167" y="782" width="80" height="80"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="5hJ-5h-zwl"/>
+                                    <constraint firstAttribute="width" constant="80" id="xWx-SU-FwQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <state key="normal" title="校验">
+                                    <color key="titleColor" red="0.93692904710000002" green="0.93797653910000001" blue="0.9646248221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="judgeAction:" destination="t6x-dP-CeN" eventType="touchUpInside" id="2g3-QL-Fg1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Krh-qo-Gde">
+                                <rect key="frame" x="121" y="731" width="172" height="41"/>
+                                <color key="backgroundColor" red="0.8177320361" green="0.26400291920000002" blue="0.098700232799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="PeS-u6-cww"/>
+                                    <constraint firstAttribute="height" constant="41" id="TF1-ft-Cdr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="拍摄待校验照片">
+                                    <color key="titleColor" red="0.93692904710000002" green="0.93797653910000001" blue="0.9646248221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getPhotoAction:" destination="t6x-dP-CeN" eventType="touchUpInside" id="i9D-2G-WcW"/>
+                                </connections>
+                            </button>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nzF-88-6Bd">
+                                <rect key="frame" x="0.0" y="93" width="414" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="原始"/>
+                                    <segment title="萤石-安全帽识别"/>
+                                </segments>
+                            </segmentedControl>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGf-nm-IPK">
+                                <rect key="frame" x="0.0" y="579" width="198" height="132"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="center" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-An-XxN">
+                                        <rect key="frame" x="8" y="8" width="182" height="118"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型:置信度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDV-Pf-I1A">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Osf-Ix-wG8">
+                                                <rect key="frame" x="0.0" y="32.5" width="182" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dF-L9-m14">
+                                                <rect key="frame" x="0.0" y="65" width="182" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sH-h4-mMm">
+                                                <rect key="frame" x="0.0" y="97.5" width="182" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NVa-An-XxN" secondAttribute="trailing" constant="8" id="8TP-IW-jC4"/>
+                                    <constraint firstAttribute="width" constant="198" id="CfW-7t-J0J"/>
+                                    <constraint firstAttribute="bottom" secondItem="NVa-An-XxN" secondAttribute="bottom" constant="6" id="FFO-gi-0Of"/>
+                                    <constraint firstItem="NVa-An-XxN" firstAttribute="leading" secondItem="AGf-nm-IPK" secondAttribute="leading" constant="8" id="YbR-39-jc1"/>
+                                    <constraint firstAttribute="height" constant="132" id="bge-Ji-gXg"/>
+                                    <constraint firstItem="NVa-An-XxN" firstAttribute="top" secondItem="AGf-nm-IPK" secondAttribute="top" constant="8" id="jqa-M2-gin"/>
+                                </constraints>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TM-CH-gbj">
+                                <rect key="frame" x="316.5" y="264" width="77.5" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77.5" id="4en-xu-s8x"/>
+                                    <constraint firstAttribute="height" constant="38" id="aaO-gf-2rJ"/>
+                                </constraints>
+                                <state key="normal" title="Button" backgroundImage="btn">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AGf-nm-IPK" firstAttribute="leading" secondItem="C9X-9R-vPy" secondAttribute="leading" id="5aJ-zU-F5k"/>
+                            <constraint firstItem="Keg-Le-g6a" firstAttribute="top" secondItem="Krh-qo-Gde" secondAttribute="bottom" constant="10" id="7zK-IU-gPb"/>
+                            <constraint firstItem="c0J-16-23X" firstAttribute="leading" secondItem="C9X-9R-vPy" secondAttribute="leading" id="Atq-Ts-PFj"/>
+                            <constraint firstItem="C9X-9R-vPy" firstAttribute="trailing" secondItem="c0J-16-23X" secondAttribute="trailing" id="FWl-rt-cv6"/>
+                            <constraint firstItem="C9X-9R-vPy" firstAttribute="trailing" secondItem="2TM-CH-gbj" secondAttribute="trailing" constant="20" id="Lzi-Qt-iPk"/>
+                            <constraint firstItem="c0J-16-23X" firstAttribute="top" secondItem="2TM-CH-gbj" secondAttribute="bottom" constant="-170" id="RhD-4b-yzB"/>
+                            <constraint firstItem="C9X-9R-vPy" firstAttribute="bottom" secondItem="Keg-Le-g6a" secondAttribute="bottom" id="XZj-Vy-MtL"/>
+                            <constraint firstItem="c0J-16-23X" firstAttribute="top" secondItem="C9X-9R-vPy" secondAttribute="top" constant="44" id="hTp-aB-07G"/>
+                            <constraint firstItem="Krh-qo-Gde" firstAttribute="top" secondItem="AGf-nm-IPK" secondAttribute="bottom" constant="20" id="iKz-r5-slX"/>
+                            <constraint firstItem="Keg-Le-g6a" firstAttribute="centerX" secondItem="C9X-9R-vPy" secondAttribute="centerX" id="lzO-id-rQ3"/>
+                            <constraint firstItem="Krh-qo-Gde" firstAttribute="centerX" secondItem="Keg-Le-g6a" secondAttribute="centerX" id="nsB-vE-4sf"/>
+                            <constraint firstItem="Krh-qo-Gde" firstAttribute="top" secondItem="c0J-16-23X" secondAttribute="bottom" constant="20" id="utm-wj-nZl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C9X-9R-vPy"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="图像识别" id="5ge-cC-Nhr"/>
+                    <connections>
+                        <outlet property="imageV" destination="c0J-16-23X" id="gLX-bs-nEo"/>
+                        <outlet property="resultBgV" destination="AGf-nm-IPK" id="acu-WF-VXD"/>
+                        <outlet property="typeBtn" destination="2TM-CH-gbj" id="SFk-CE-GCZ"/>
+                        <outlet property="typeLabel1" destination="Osf-Ix-wG8" id="fjH-ZR-flz"/>
+                        <outlet property="typeLabel2" destination="6dF-L9-m14" id="8JT-os-fT7"/>
+                        <outlet property="typeLabel3" destination="5sH-h4-mMm" id="Qsb-zm-V5O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWG-0y-U5U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1186.9565217391305" y="422.54464285714283"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btn" width="77.5" height="37.5"/>
         <image name="image" width="223" height="200"/>
     </resources>
 </document>

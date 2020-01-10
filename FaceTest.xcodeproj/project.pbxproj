@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		710E57F09FBF2149FCFDA72F /* libPods-FaceTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B00D467A852E11A1A92A45 /* libPods-FaceTest.a */; };
+		F034761823C6C06D000227E7 /* TYImageRecognitionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F034761723C6C06D000227E7 /* TYImageRecognitionVC.m */; };
+		F03E806D23C8542100335B57 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F03E806C23C8542100335B57 /* icon.png */; };
 		F08DD59B23750D330079EFFA /* FaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F08DD59A23750D330079EFFA /* FaceViewController.m */; };
 		F08DD5A3237517C90079EFFA /* UIImage+TYImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F08DD5A2237517C90079EFFA /* UIImage+TYImage.m */; };
 		F08DD5AF23753DD10079EFFA /* TotalModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F08DD5AE23753DD10079EFFA /* TotalModel.m */; };
@@ -42,6 +44,9 @@
 		20B00D467A852E11A1A92A45 /* libPods-FaceTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FaceTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D2453FB9644BFCB0A9A1A8 /* Pods-FaceTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceTest.release.xcconfig"; path = "Target Support Files/Pods-FaceTest/Pods-FaceTest.release.xcconfig"; sourceTree = "<group>"; };
 		A60AE0A884AD04412925B64A /* Pods-FaceTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FaceTest.debug.xcconfig"; path = "Target Support Files/Pods-FaceTest/Pods-FaceTest.debug.xcconfig"; sourceTree = "<group>"; };
+		F034761623C6C06D000227E7 /* TYImageRecognitionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYImageRecognitionVC.h; sourceTree = "<group>"; };
+		F034761723C6C06D000227E7 /* TYImageRecognitionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYImageRecognitionVC.m; sourceTree = "<group>"; };
+		F03E806C23C8542100335B57 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		F064EA6D237BF62700BA896A /* pythonTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = pythonTest.py; sourceTree = "<group>"; };
 		F08DD59923750D330079EFFA /* FaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceViewController.h; sourceTree = "<group>"; };
 		F08DD59A23750D330079EFFA /* FaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceViewController.m; sourceTree = "<group>"; };
@@ -101,6 +106,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F034761523C6BE08000227E7 /* ImageRecognition */ = {
+			isa = PBXGroup;
+			children = (
+				F034761623C6C06D000227E7 /* TYImageRecognitionVC.h */,
+				F034761723C6C06D000227E7 /* TYImageRecognitionVC.m */,
+			);
+			path = ImageRecognition;
+			sourceTree = "<group>";
+		};
 		F08DD59823750D060079EFFA /* Face++ */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +139,7 @@
 		F0C873AB23336ABE00438675 = {
 			isa = PBXGroup;
 			children = (
+				F03E806C23C8542100335B57 /* icon.png */,
 				F0C873B623336ABE00438675 /* FaceTest */,
 				F0C873CF23336AC000438675 /* FaceTestTests */,
 				F0C873DA23336AC000438675 /* FaceTestUITests */,
@@ -147,6 +162,7 @@
 		F0C873B623336ABE00438675 /* FaceTest */ = {
 			isa = PBXGroup;
 			children = (
+				F034761523C6BE08000227E7 /* ImageRecognition */,
 				F08DD59C237517830079EFFA /* Tools */,
 				F08DD59823750D060079EFFA /* Face++ */,
 				F0C873B723336ABE00438675 /* AppDelegate.h */,
@@ -293,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03E806D23C8542100335B57 /* icon.png in Resources */,
 				F0C873C423336ABF00438675 /* LaunchScreen.storyboard in Resources */,
 				F0C873C123336ABF00438675 /* Assets.xcassets in Resources */,
 				F0C873BF23336ABE00438675 /* Main.storyboard in Resources */,
@@ -345,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F034761823C6C06D000227E7 /* TYImageRecognitionVC.m in Sources */,
 				F08DD5A3237517C90079EFFA /* UIImage+TYImage.m in Sources */,
 				F0C873BC23336ABE00438675 /* ViewController.m in Sources */,
 				F08DD59B23750D330079EFFA /* FaceViewController.m in Sources */,

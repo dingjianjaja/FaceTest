@@ -25,8 +25,8 @@
             filePath = "FaceTest/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-compare:"
             landmarkType = "7">
             <Locations>
@@ -41,24 +41,9 @@
                   urlString = "file:///Users/dingjianjaja/Github_lib/FaceTest/FaceTest/ViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "1456">
-               </Location>
-               <Location
-                  uuid = "42D46071-49B2-4302-880C-15310629A80D - 4c84ca648edf8bef"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_e8_32s"
-                  moduleName = "FaceTest"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dingjianjaja/Github_lib/FaceTest/FaceTest/ViewController.m"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "16">
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "1460">
                </Location>
                <Location
                   uuid = "42D46071-49B2-4302-880C-15310629A80D - d161833c6ad37ab0"
@@ -71,9 +56,9 @@
                   urlString = "file:///Users/dingjianjaja/Github_lib/FaceTest/FaceTest/ViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "82">
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "84">
                </Location>
             </Locations>
          </BreakpointContent>

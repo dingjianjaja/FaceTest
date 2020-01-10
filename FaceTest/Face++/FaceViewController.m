@@ -167,7 +167,7 @@
         CGContextStrokeRect(context,headRect);
         
         NSString *subImageStr = [[self getPartOfImage:_imageV.image rect:headRect] toBase64];
-        NSString *url = @"https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token='24.65c36dd236ac63e0cdac5ca0e491458d.2592000.1575944387.282335-17737295'";
+        NSString *url = @"https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token='24.1621668b734490e27860ab607e09f3c6.2592000.1581229258.282335-17737295'";
         NSDictionary *params = @{@"image":subImageStr};
             // 获得请求管理者
             AFHTTPSessionManager *session = [AFHTTPSessionManager manager];
