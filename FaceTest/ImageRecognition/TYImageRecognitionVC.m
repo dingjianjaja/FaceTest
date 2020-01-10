@@ -75,12 +75,19 @@
             if (i == 0) {
                 self->_typeLabel1.text = [NSString stringWithFormat:@"%@:%.2f",self.typeModelDic[typeName],scroStr.floatValue];
                 [self.typeBtn setTitle:self.typeModelDic[typeName] forState:UIControlStateNormal];
-            }else if (i == 1) {
-                self->_typeLabel2.text = [NSString stringWithFormat:@"%@:%.2f",self.typeModelDic[typeName],scroStr.floatValue];
-            }else if (i == 2) {
-                self->_typeLabel3.text = [NSString stringWithFormat:@"%@:%.2f",self.typeModelDic[typeName],scroStr.floatValue];
+                if ([typeName isEqualToString:@"RRU"]) {
+                    self.typeLabel2.text = @"品牌：ZTE 中兴";
+                    self.typeLabel3.text = @"型号：ZXSDR R8860E GU908";
+                }else if ([typeName isEqualToString:@"rectifier"]) {
+                    self.typeLabel2.text = @"品牌：EMERSON艾默生";
+                    self.typeLabel3.text = @"型号：R48-2900整流模块";
+                }else{
+                    self.typeLabel2.text = @"";
+                    self.typeLabel3.text = @"";
+                }
             }
         }
+        
         self.resultBgV.hidden = NO;
         self.typeBtn.hidden = NO;
         

@@ -405,7 +405,7 @@
                                     <stackView opaque="NO" contentMode="center" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-An-XxN">
                                         <rect key="frame" x="8" y="8" width="182" height="118"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型:置信度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDV-Pf-I1A">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDV-Pf-I1A">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -435,7 +435,7 @@
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="NVa-An-XxN" secondAttribute="trailing" constant="8" id="8TP-IW-jC4"/>
-                                    <constraint firstAttribute="width" constant="198" id="CfW-7t-J0J"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="CfW-7t-J0J"/>
                                     <constraint firstAttribute="bottom" secondItem="NVa-An-XxN" secondAttribute="bottom" constant="6" id="FFO-gi-0Of"/>
                                     <constraint firstItem="NVa-An-XxN" firstAttribute="leading" secondItem="AGf-nm-IPK" secondAttribute="leading" constant="8" id="YbR-39-jc1"/>
                                     <constraint firstAttribute="height" constant="132" id="bge-Ji-gXg"/>
